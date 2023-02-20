@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">ComposeLoading</string>
+    <string name="success">加载成功的数据</string>
+    <string name="error">加载失败</string>
+    <string name="load_might_failed">简单使用，加载可能失败</string>
+    <string name="simple_loading_list">LazyColumn简单使用</string>
+    <string name="load_list_might_failed">LazyColumn使用，可能失败</string>
+    <string name="increment_key_and_retry">变更key值（触发重新加载）</string>
+    <string name="load_with_key">手动控制key</string>
+    <string name="loading">正在加载~</string>
+    <string name="retry">重试</string>
+    <string name="load_with_custom_composable">自定义“加载中”和“加载失败”的控件</string>
+    <string name="simple_loading">最简单的使用</string>
+</resources>

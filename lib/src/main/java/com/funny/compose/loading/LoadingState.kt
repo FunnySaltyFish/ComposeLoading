@@ -4,8 +4,8 @@ package com.funny.compose.loading
  * A sealed class to represent the state of loading.
  *
  * R: The type of data that will be loaded.
- * @property isLoading Boolean
- * @property isSuccess Boolean
+ * @property isLoading Boolean Whether the loading is in progress.
+ * @property isSuccess Boolean Whether the loading is successful.
  */
 sealed class LoadingState<out R> {
     object Loading : LoadingState<Nothing>()

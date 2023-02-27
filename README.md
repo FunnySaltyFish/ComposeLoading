@@ -10,7 +10,8 @@ fun SimpleLoading() {
 }
 ```
 
-![Demo](./demo_cn.mp4)
+[![Demo]()](https://user-images.githubusercontent.com/46063434/221483754-dbbcd374-36b7-4ee7-82a8-2311d004a573.mp4
+)
 
 Demo: [点此下载](./demo-debug.apk)
 
@@ -133,4 +134,4 @@ sealed class LoadingState<out R> {
 
 ## 3. 更多
 此库是我在编写 [译站](https://github.com/FunnySaltyFish/FunnyTranslation) 时逐步写下的，现在整理出来单独发布。它的技术含量并不高，但在实用性上应该具一定价值，因此开源出来。
-更复杂的用法可以见上面的项目链接，全局搜索 LoadingContent 和 loadingList 即可
+更复杂的用法可以见上面译站的项目代码，全局搜索 LoadingContent 和 loadingList 即可

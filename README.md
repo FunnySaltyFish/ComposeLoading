@@ -1,6 +1,10 @@
 # ComposeLoading
 <center>简洁、易用的在 Jetpack Compose 中展示加载页面</center>
 
+| [![Version](https://jitpack.io/v/FunnySaltyFish/ComposeLoading.svg)](https://jitpack.io/#FunnySaltyFish/ComposeLoading) | [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0) |
+|---------------------------------------------------------------------------------------------------------------------------| ------------------------------------------------------------ |
+
+
 ```kotlin
 @Composable
 fun SimpleLoading() {
@@ -22,14 +26,16 @@ ComposeLoading 是对 Jetpack Compose 加载场景的简单封装，其设计在
 ### 2.1 添加依赖
 在项目中添加 `jitpack.io` 的储存库，之后在模块级别的 `build.gradle` 中添加依赖
 ```groovy
-implementation 'com.github.FunnySaltyFish:ComposeLoading:v1.0.1'
+implementation 'com.github.FunnySaltyFish:ComposeLoading:v1.0.2'
 ```
 
 ### 2.2 基本使用
 ```kotlin
 @Composable
 fun SimpleLoading() {
+    // loader 即为加载函数，比如从网络请求数据、从数据库查询数据等
     LoadingContent(loader = LoadingFunctions::simpleLoad) { successData -> 
+        // successData 即为加载成功后的数据，可以在 success 中访问到
         SuccessResult(text = successData)
     }
 }
@@ -108,6 +114,8 @@ fun SimpleLoadingList() {
 ```
 `rememberRetryableLoadingState` 返回了两个值，一是 `LoadingState`，二是 `retry` 函数，`retry` 函数用于重试，`LoadingState: MutableState<LoadingState<T>>` 用于存储加载状态。
 
+v1.0.2 起也新增了对 `LazyGrid` 和 `LazyStaggeredGrid` 的支持，可以参考 [Examples.kt](app/src/main/java/com/funny/compose/loading/ui/Examples.kt)
+
 ## 3. LoadingState
 项目也包含了一个 `LoadingState` 类，用于存储加载状态，它的定义如下：
 ```kotlin
@@ -131,6 +139,9 @@ sealed class LoadingState<out R> {
 ```
 可以拿来使用
 
+## 3. 配置
+`ComposeLoadingConfig` 提供了一些配置，目前有
+- `DEBUG`：设置为 true 后，会输出一些日志信息，默认为 false
 
 ## 3. 更多
 此库是我在编写 [译站](https://github.com/FunnySaltyFish/FunnyTranslation) 时逐步写下的，现在整理出来单独发布。它的技术含量并不高，但在实用性上应该具一定价值，因此开源出来。

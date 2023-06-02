@@ -1,5 +1,8 @@
 # ComposeLoading
 
+| [![Version](https://jitpack.io/v/FunnySaltyFish/ComposeLoading.svg)](https://jitpack.io/#FunnySaltyFish/ComposeLoading) | [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0) |
+|---------------------------------------------------------------------------------------------------------------------------| ------------------------------------------------------------ |
+
 > The English version is translated with the help of ChatGPT, thanks for it!
 
 <center>Simple and easy to use library to display loading pages in Jetpack Compose</center>
@@ -28,7 +31,7 @@ Demo: [Click to download](./demo-debug.apk)
 Add the `jitpack.io` repository to your project, and then add the following dependency in the `build.gradle` file of the module:
 
 ```groovy
-implementation 'com.github.FunnySaltyFish:ComposeLoading:v1.0.1'
+implementation 'com.github.FunnySaltyFish:ComposeLoading:v1.0.2'
 ```
 
 ### 2.2 Basic Usage
@@ -36,7 +39,9 @@ implementation 'com.github.FunnySaltyFish:ComposeLoading:v1.0.1'
 ```kotlin
 @Composable
 fun SimpleLoading() {
-    LoadingContent(loader = LoadingFunctions::simpleLoad) { successData -> 
+    // The loader is the loading function, such as requesting data from the network or querying data from a database
+    LoadingContent(loader = LoadingFunctions::simpleLoad) { successData ->
+        // successData is the data loaded successfully, which can be accessed in success. 
         SuccessResult(text = successData)
     }
 }
@@ -121,6 +126,8 @@ fun SimpleLoadingList() {
 ```
 
 `rememberRetryableLoadingState` returns two values: `LoadingState` and `retry` function. The `retry` function is used for retrying and the `LoadingState: MutableState<LoadingState<T>>` is used for storing the loading state.
+
+Starting from v1.0.2, support for `LazyGrid` and `LazyStaggeredGrid` has been added. You can refer to [Examples.kt](app/src/main/java/com/funny/compose/loading/ui/Examples.kt).
 
 ## 3. LoadingState
 

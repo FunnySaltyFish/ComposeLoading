@@ -35,6 +35,8 @@ val pages: List<Pair<String, @Composable () -> Unit>> =
         stringResource(R.string.load_might_failed) to { LoadMightFailed() },
         stringResource(R.string.simple_loading_list) to { SimpleLoadingList() },
         stringResource(R.string.load_list_might_failed) to { LoadListMightFailed() },
+        stringResource(R.string.load_grid_might_failed) to { LoadGridMightFailed() },
+        stringResource(R.string.load_staggered_grid_might_failed) to { LoadStaggeredGridMightFailed() },
         stringResource(R.string.load_with_key) to { LoadWithKey() },
         stringResource(R.string.load_with_custom_composable) to { LoadWithCustomComposable() },
     )
@@ -66,7 +68,7 @@ fun Catalog() {
                 // 整体内边距
                 contentPadding = PaddingValues(8.dp, 8.dp),
                 // item 和 item 之间的纵向间距
-                verticalArrangement = Arrangement.spacedBy(4.dp),
+                verticalItemSpacing = 4.dp,
                 // item 和 item 之间的横向间距
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {

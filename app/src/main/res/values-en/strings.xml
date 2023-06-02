@@ -8,7 +8,9 @@
     <string name="load_list_might_failed">Use in LazyColumn, Might Fail</string>
     <string name="increment_key_and_retry">Change key\'s value ( it leads to retry)</string>
     <string name="load_with_key">Control Key Manually</string>
-    <string name="loading">Loading...</string>
+    <string name="loading">Loading…</string>
     <string name="retry">Retry</string>
     <string name="load_with_custom_composable">Customize the Loading and Loading Failure Composables</string>
+    <string name="load_grid_might_failed">Used by LazyGrid, loading may fail</string>
+    <string name="load_staggered_grid_might_failed">Used by LazyStaggeredGrid, loading may fail</string>
 </resources>

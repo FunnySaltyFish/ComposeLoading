@@ -18,11 +18,12 @@ import kotlin.math.sin
 
 
 @Composable
-fun BoxScope.DefaultLoading(modifier: Modifier = Modifier) {
+fun DefaultLoading(modifier: Modifier = Modifier) {
     CustomLoading(modifier = modifier
         .fillMaxWidth()
+        .wrapContentWidth(align = Alignment.CenterHorizontally)
         .height(40.dp)
-        .align(Alignment.TopCenter))
+    )
 }
 
 @Composable

@@ -54,13 +54,14 @@ fun Catalog() {
             .padding(12.dp),
         transitionSpec = {
             slideIntoContainer(
-                AnimatedContentScope.SlideDirection.Right,
+                AnimatedContentTransitionScope.SlideDirection.Right,
                 tween(500)
-            ) with fadeOut() + slideOutOfContainer(
-                AnimatedContentScope.SlideDirection.Left,
+            ) togetherWith  fadeOut() + slideOutOfContainer(
+                AnimatedContentTransitionScope.SlideDirection.Left,
                 tween(500)
             )
         },
+        label = "catalog",
     ) {
         when (it) {
             null -> LazyVerticalStaggeredGrid(

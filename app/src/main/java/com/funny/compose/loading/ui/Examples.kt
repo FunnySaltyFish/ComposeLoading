@@ -95,7 +95,7 @@ fun LoadGridMightFailed() {
         horizontalArrangement = Arrangement.spacedBy(8.dp),
         contentPadding = PaddingValues(8.dp)
     ) {
-        loadingGrid(listState, retry, { it }) {
+        loadingList(listState, retry, { it }) {
             SuccessResultColoredText(text = it)
         }
     }
@@ -112,7 +112,7 @@ fun LoadStaggeredGridMightFailed() {
         verticalItemSpacing = 8.dp,
         horizontalArrangement = Arrangement.spacedBy(8.dp)
     ) {
-        loadingStaggeredGrid(listState, retry, { it }) {
+        loadingList(listState, retry, { it }) {
             val height = rememberSaveable {
                 Random.nextInt(100, 200)
             }

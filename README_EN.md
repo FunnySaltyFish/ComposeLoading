@@ -129,6 +129,8 @@ fun SimpleLoadingList() {
 
 Starting from v1.0.2, support for `LazyGrid` and `LazyStaggeredGrid` has been added. You can refer to [Examples.kt](app/src/main/java/com/funny/compose/loading/ui/Examples.kt).
 
+Tou can also use `empty` to set the content displayed when the list is empty; use `successHeader` and `successFooter` to set additional header and footer.
+
 ## 3. LoadingState
 
 The project also includes a `LoadingState` class, which is used to represent the loading state. Its definition is as follows:

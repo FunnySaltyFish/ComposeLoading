@@ -116,6 +116,8 @@ fun SimpleLoadingList() {
 
 v1.0.2 起也新增了对 `LazyGrid` 和 `LazyStaggeredGrid` 的支持，可以参考 [Examples.kt](app/src/main/java/com/funny/compose/loading/ui/Examples.kt)
 
+您也可以通过 `empty` 设置空列表时显示的内容；通过 `successHeader` 和 `successFooter` 设置额外的 header 和 footer
+
 ## 3. LoadingState
 项目也包含了一个 `LoadingState` 类，用于存储加载状态，它的定义如下：
 ```kotlin

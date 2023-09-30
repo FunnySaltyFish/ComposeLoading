@@ -31,7 +31,8 @@ Demo: [Click to download](./demo-debug.apk)
 Add the `jitpack.io` repository to your project, and then add the following dependency in the `build.gradle` file of the module:
 
 ```groovy
-implementation 'com.github.FunnySaltyFish:ComposeLoading:v1.0.2'
+implementation 'com.github.FunnySaltyFish:ComposeLoading:v1.0.3' 
+// This might not be the newest version, please refer to https://jitpack.io/#FunnySaltyFish/ComposeLoading 
 ```
 
 ### 2.2 Basic Usage

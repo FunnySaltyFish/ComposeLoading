@@ -26,7 +26,7 @@ ComposeLoading 是对 Jetpack Compose 加载场景的简单封装，其设计在
 ### 2.1 添加依赖
 在项目中添加 `jitpack.io` 的储存库，之后在模块级别的 `build.gradle` 中添加依赖
 ```groovy
-implementation 'com.github.FunnySaltyFish:ComposeLoading:v1.0.2'
+implementation 'com.github.FunnySaltyFish:ComposeLoading:v1.0.3' // 这个版本不一定最新，请参考 https://jitpack.io/#FunnySaltyFish/ComposeLoading 的最新版本
 ```
 
 ### 2.2 基本使用

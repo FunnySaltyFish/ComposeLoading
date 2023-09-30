@@ -86,6 +86,47 @@ fun LoadListMightFailed() {
 }
 
 @Composable
+fun LoadingEmptyList() {
+    val (listState, retry) = rememberRetryableLoadingState(loader = LoadingFunctions::loadEmptyList)
+    LazyColumn(
+        Modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.spacedBy(8.dp)
+    ) {
+        loadingList(
+            value = listState,
+            retry = retry,
+            key = { it },
+            empty = {
+                DefaultEmpty()
+            }
+        ) {
+            // success
+        }
+    }
+}
+
+@Composable
+fun LoadListWithHeaderAndFooter() {
+    val (listState, retry) = rememberRetryableLoadingState(loader = LoadingFunctions::loadList)
+    LazyColumn(Modifier.fillMaxSize(), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+        loadingList(
+            value = listState,
+            retry = retry,
+            key = { it },
+            successHeader = {
+                FullLineText(text = "Header")
+            },
+            successFooter = {
+                FullLineText(text = "Footer")
+            }
+        ) {
+            SuccessResultText(text = it)
+        }
+    }
+}
+
+
+@Composable
 fun LoadGridMightFailed() {
     val (listState, retry) = rememberRetryableLoadingState(loader = LoadingFunctions::loadListMightFailed)
     LazyVerticalGrid(
@@ -95,13 +136,22 @@ fun LoadGridMightFailed() {
         horizontalArrangement = Arrangement.spacedBy(8.dp),
         contentPadding = PaddingValues(8.dp)
     ) {
-        loadingList(listState, retry, { it }) {
-            SuccessResultColoredText(text = it)
+        loadingList(
+            value = listState,
+            retry = retry,
+            key = { it },
+            successHeader = {
+                FullLineText(text = "Header")
+            },
+            successFooter = {
+                FullLineText(text = "Footer")
+            }
+        ) {
+            SuccessResultText(text = it)
         }
     }
 }
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun LoadStaggeredGridMightFailed() {
     val (listState, retry) = rememberRetryableLoadingState(loader = LoadingFunctions::loadListMightFailed)
@@ -112,7 +162,17 @@ fun LoadStaggeredGridMightFailed() {
         verticalItemSpacing = 8.dp,
         horizontalArrangement = Arrangement.spacedBy(8.dp)
     ) {
-        loadingList(listState, retry, { it }) {
+        loadingList(
+            value = listState,
+            retry = retry,
+            key = { it },
+            successHeader = {
+                FullLineText(text = "Header")
+            },
+            successFooter = {
+                FullLineText(text = "Footer")
+            }
+        ) {
             val height = rememberSaveable {
                 Random.nextInt(100, 200)
             }
@@ -123,7 +183,7 @@ fun LoadStaggeredGridMightFailed() {
 
 @Composable
 fun LoadWithKey() {
-    var key by remember { mutableStateOf(0) }
+    var key by remember { mutableIntStateOf(0) }
     Column {
         LoadingContent(
             retryKey = key,
@@ -170,3 +230,13 @@ fun LoadWithCustomComposable() {
     }
 }
 
+@Composable
+private fun FullLineText(text: String) {
+    Text(
+        text = text,
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(MaterialTheme.colorScheme.primaryContainer)
+            .wrapContentSize(Alignment.Center)
+    )
+}

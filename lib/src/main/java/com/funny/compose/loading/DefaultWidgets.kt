@@ -87,3 +87,17 @@ fun DefaultFailure(modifier: Modifier = Modifier, retry: () -> Unit) {
         fontSize = 16.sp
     )
 }
+
+@Composable
+fun DefaultEmpty(modifier: Modifier = Modifier) {
+    Text(
+        text = stringResource(id = R.string.loading_empty),
+        modifier = modifier
+            .fillMaxWidth()
+            .wrapContentWidth(Alignment.CenterHorizontally)
+            .padding(8.dp),
+        color = Color.Gray,
+        fontWeight = FontWeight.Light,
+        fontSize = 16.sp
+    )
+}

@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="loading_error">Failed to load, click me to retry</string>
+    <string name="loading_empty">No content</string>
+
 </resources>

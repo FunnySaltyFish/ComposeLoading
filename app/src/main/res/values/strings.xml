@@ -13,4 +13,6 @@
     <string name="simple_loading">最简单的使用</string>
     <string name="load_grid_might_failed">LazyGrid使用，加载可能失败</string>
     <string name="load_staggered_grid_might_failed">LazyStaggeredGrid使用，加载可能失败</string>
+    <string name="load_list_empty">空页面（empty参数）</string>
+    <string name="load_list_with_header_and_footer">Header + Footer</string>
 </resources>

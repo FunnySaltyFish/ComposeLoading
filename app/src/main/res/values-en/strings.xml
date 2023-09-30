@@ -13,4 +13,6 @@
     <string name="load_with_custom_composable">Customize the Loading and Loading Failure Composables</string>
     <string name="load_grid_might_failed">Used by LazyGrid, loading may fail</string>
     <string name="load_staggered_grid_might_failed">Used by LazyStaggeredGrid, loading may fail</string>
+    <string name="load_list_empty">Empty List（argument `empty`）</string>
+    <string name="load_list_with_header_and_footer">Header + Footer</string>
 </resources>

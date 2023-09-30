@@ -33,15 +33,33 @@ fun <T : Any> LazyListScope.loadingList(
     failure: @Composable LazyItemScope.(error: Throwable) -> Unit = {
         DefaultFailure(retry = retry)
     },
+    empty: @Composable LazyItemScope.() -> Unit = { },
+    successHeader: @Composable (LazyItemScope.() -> Unit)? = null,
+    successFooter: @Composable (LazyItemScope.() -> Unit)? = null,
     success: @Composable LazyItemScope.(data: T) -> Unit,
 ) {
     when (value.value) {
         is LoadingState.Loading -> item(key = "loading") { loading() }
-        is LoadingState.Success<*> -> items(
-            (value.value as LoadingState.Success<List<T>>).data, key
-        ) {
-            log("loadingList: data: $it")
-            success(it)
+        is LoadingState.Success<*> -> {
+            val data = (value.value as LoadingState.Success<List<T>>).data
+            if (data.isEmpty()) {
+                item(key = "empty") { empty() }
+            } else {
+                if (successHeader != null) {
+                    item(key = "successHeader") {
+                        successHeader()
+                    }
+                }
+                items(data, key) {
+                    log("loadingList: successfully loaded data: $it")
+                    success(it)
+                }
+                if (successFooter != null) {
+                    item(key = "successFooter") {
+                        successFooter()
+                    }
+                }
+            }
         }
         is LoadingState.Failure -> item {
             failure(
@@ -70,6 +88,9 @@ fun <T : Any> LazyGridScope.loadingList(
     failure: @Composable LazyGridItemScope.(error: Throwable) -> Unit = {
         DefaultFailure(retry = retry)
     },
+    empty: @Composable LazyGridItemScope.() -> Unit = { },
+    successHeader: @Composable (LazyGridItemScope.() -> Unit)? = null,
+    successFooter: @Composable (LazyGridItemScope.() -> Unit)? = null,
     success: @Composable LazyGridItemScope.(data: T) -> Unit,
 ) {
     val fullLineItem = { content: @Composable LazyGridItemScope.() -> Unit ->
@@ -77,13 +98,30 @@ fun <T : Any> LazyGridScope.loadingList(
     }
     when (value.value) {
         is LoadingState.Loading -> fullLineItem { loading() }
-        is LoadingState.Success<*> -> items(
-            items = (value.value as LoadingState.Success<List<T>>).data,
-            key = key,
-            span = span,
-            contentType = contentType
-        ) {
-            success(it)
+        is LoadingState.Success<*> -> {
+            val data = (value.value as LoadingState.Success<List<T>>).data
+            if (data.isEmpty()) {
+                fullLineItem { empty() }
+            } else {
+                if (successHeader != null) {
+                    fullLineItem {
+                        successHeader()
+                    }
+                }
+                items(
+                    items = data,
+                    key = key,
+                    span = span,
+                    contentType = contentType
+                ) {
+                    success(it)
+                }
+                if (successFooter != null) {
+                    fullLineItem {
+                        successFooter()
+                    }
+                }
+            }
         }
         is LoadingState.Failure -> fullLineItem {
             failure(
@@ -112,6 +150,9 @@ fun <T : Any> LazyStaggeredGridScope.loadingList(
     failure: @Composable LazyStaggeredGridItemScope.(error: Throwable) -> Unit = {
         DefaultFailure(retry = retry)
     },
+    empty: @Composable LazyStaggeredGridItemScope.() -> Unit = { },
+    successHeader: @Composable (LazyStaggeredGridItemScope.() -> Unit)? = null,
+    successFooter: @Composable (LazyStaggeredGridItemScope.() -> Unit)? = null,
     success: @Composable LazyStaggeredGridItemScope.(data: T) -> Unit,
 ) {
     val fullLineItem = { content: @Composable LazyStaggeredGridItemScope.() -> Unit ->
@@ -119,13 +160,30 @@ fun <T : Any> LazyStaggeredGridScope.loadingList(
     }
     when (value.value) {
         is LoadingState.Loading -> fullLineItem { loading() }
-        is LoadingState.Success<*> -> items(
-            items = (value.value as LoadingState.Success<List<T>>).data,
-            key = key,
-            span = span,
-            contentType = contentType
-        ) {
-            success(it)
+        is LoadingState.Success<*> -> {
+            val data = (value.value as LoadingState.Success<List<T>>).data
+            if (data.isEmpty()) {
+                fullLineItem { empty() }
+            } else {
+                if (successHeader != null) {
+                    fullLineItem {
+                        successHeader()
+                    }
+                }
+                items(
+                    items = data,
+                    key = key,
+                    span = span,
+                    contentType = contentType
+                ) {
+                    success(it)
+                }
+                if (successFooter != null) {
+                    fullLineItem {
+                        successFooter()
+                    }
+                }
+            }
         }
         is LoadingState.Failure -> fullLineItem {
             failure(
